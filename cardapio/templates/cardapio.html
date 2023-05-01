@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+  <head>
+  <link type="text/css" href="{% static '/general/css/base.css'%}" >
+      <link type="text/css"  href="{% static '/general/css/general.css'%}" >
+  </head>
+
+{% block 'body' %}
+
+    <div class="container">
+        <div class="card">
+          <h1>TESTE BASE</h1>
+          <p>Este container possui tamanho fixo - testando responsividade do bootstrap no navegador web google chrome</p>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid border">
+        <div class="card2">
+            <h1>TESTE BASE</h1>
+            <p>Este container possui tamanho fixo - testando responsividade do bootstrap no navegador web google chrome teste</p>
+        </div>
+    </div>
+
+{% endblock  %}
