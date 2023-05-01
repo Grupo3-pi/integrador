@@ -1,27 +1,17 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "hamburguera/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-      },
-      {
-        "src": "build.sh",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "staticfiles_build"
-        }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/static/(.*)",
-        "dest": "/static/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "hamburgueria/wsgi.py"
-      }
-    ]
+  "builds": [
+    {
+      "src": "hamburgueria/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "hamburgueria/wsgi.py" }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "hamburgueria.settings",
+    "SECRET_KEY": "django-insecure-u$ysokfsty8inat=i63@s1%y8y^)#))0xy+!dhv@x5idg_(cm*",
+    "DEBUG": "false"
   }
+
+}
