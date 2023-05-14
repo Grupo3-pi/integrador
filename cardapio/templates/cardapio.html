@@ -4,6 +4,7 @@
   <head>
     <link rel="stylesheet" href="{% static 'general/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'general/css/general.css' %}">
+    <link rel="stylesheet" href="{% static 'cardapio/css/cardapio.css' %}">
   </head>
 
 {% block 'body' %}
@@ -13,7 +14,7 @@
 
 <div class="row row-cols-1 row-cols-md-3 g-4 mx-4">
     <div class="col">
-      <div class="card">
+      <div id="c1" class="card">
         <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Nome do Prato</h5>
@@ -22,7 +23,7 @@
       </div>
     </div>
     <div class="col">
-      <div class="card">
+      <div id="c2" class="card">
         <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Nome do Prato</h5>
@@ -31,7 +32,7 @@
       </div>
     </div>
     <div class="col">
-      <div class="card">
+      <div id="c3" class="card">
         <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Nome do Prato</h5>
@@ -40,15 +41,15 @@
       </div>
     </div>
     <div class="col">
-      <div class="card">
+      <div id="c4" class="card">
         <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Nome do Prato</h5>
           <p class="card-text">Ingredientes.</p>
         </div>
       </div>
-    </div><div class="col">
-        <div class="card">
+    </div><div id="c5" class="col">
+        <div onclick="exibir_form('1')" class="card">
           <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Nome do Prato</h5>
@@ -56,6 +57,16 @@
           </div>
         </div>
       </div>
+  </div>
+
+  <div id="cardapio_teste" onclick="exibir_form('2')">
+
+
+    <h5 class="card-title">Você clicou no prato</h5>
+
+    {{Cardapios}}
+
+
   </div>
 
     
