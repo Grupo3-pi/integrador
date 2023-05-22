@@ -13,59 +13,44 @@
 <br>
 
 <div class="row row-cols-1 row-cols-md-3 g-4 mx-4">
-    <div class="col">
-      <div id="c1" class="card">
-        <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Nome do Prato</h5>
-          <p class="card-text">Ingredientes</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div id="c2" class="card">
-        <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Nome do Prato</h5>
-          <p class="card-text">Ingredientes.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div id="c3" class="card">
-        <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Nome do Prato</h5>
-          <p class="card-text">Ingredientes.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div id="c4" class="card">
-        <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Nome do Prato</h5>
-          <p class="card-text">Ingredientes.</p>
-        </div>
-      </div>
-    </div><div id="c5" class="col">
+
+  {% for pratos in prato %}
+
+    <div id="c5" class="col">
         <div onclick="exibir_form('1')" class="card">
-          <img src="{% static 'media/images.jpeg' %}" class="card-img-top" alt="...">
+         <img src="{% static ''|add:pratos.foto.url %}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Nome do Prato</h5>
-            <p class="card-text">Ingredientes.</p>
+            <h5 class="card-title" value="{{ingrediente.id}}">{{ pratos.nome_prato }}</h5>
+
+            <p>Ingredientes: 
+              {% for cardapio in pratos.cardapio_set.all %}
+                  {{ cardapio.Ingrediente.nome }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </p>
+
           </div>
         </div>
-      </div>
-  </div>
+    </div>
 
-  <div id="cardapio_teste" onclick="exibir_form('2')">
+  {% endfor %}    
+
+</div>
+
+
+  <div id="cardapio_teste" onclick="exibir_form('3')">
 
 
     <h5 class="card-title">Você clicou no prato</h5>
 
-    {{Cardapios}}
+    <select onchange="exibir_form('2')">
 
+      {% for ingrediente in prato %}
+
+      <option value="{{ingrediente.id}}">{{ingrediente}}</option>
+
+      {% endfor %}
+
+    </select>
 
   </div>
 
