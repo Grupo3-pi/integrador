@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Cardapio
+from .models import Cardapio, Prato, Ingredientes
+
 
 def cardapio(request):
-    cardapio_list = Cardapio.objects.all()
-    return render(request, 'cardapio.html', {'Cardapio': cardapio_list})
+    prato_list = Prato.objects.all()
+    return render(request, 'cardapio.html', {'prato': prato_list})

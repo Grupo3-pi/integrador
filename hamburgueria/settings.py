@@ -68,16 +68,16 @@ WSGI_APPLICATION = 'hamburgueria.wsgi.application'
  #   'default': {
   #     'ENGINE': 'django.db.backends.postgresql',
    #     'NAME': 'cardapio_postgre',
-   #     'USER': 'grupo3_ti_pi',
-   #     'PASSWORD': '4PuA2Jc9O0xVuvRf70UJDIWa1pAiBmrR',
-  #      'HOST': 'dpg-ch81s0o2qv2864qb6n60-a.oregon-postgres.render.com',
-  # }
+    #    'USER': 'grupo3_ti_pi',
+     #   'PASSWORD': '4PuA2Jc9O0xVuvRf70UJDIWa1pAiBmrR',
+      #  'HOST': 'dpg-ch81s0o2qv2864qb6n60-a.oregon-postgres.render.com',
+#   }
 #}
+
 
 DATABASES = {
     'default': dj_database_url.config(),
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
