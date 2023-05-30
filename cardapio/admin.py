@@ -4,11 +4,13 @@ from .models import Cardapio, Prato, Ingredientes
 @admin.register(Cardapio)
 class CardapioAdmin(admin.ModelAdmin):
     list_display=('id','prato','Ingrediente')
+    list_display_links=('id','prato','Ingrediente')
     list_filter=('prato','Ingrediente')
 
 @admin.register(Ingredientes)
 class IngredientesAdmin(admin.ModelAdmin):
     list_display=('id','nome','tipo')
+    list_display_links=('id','nome')
     list_filter=('tipo',)
     search_fields=('nome',)
 
