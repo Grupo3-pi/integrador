@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="{% static 'cardapio/css/cardapio.css' %}">
   </head>
 
+
+{% block 'drop'%}
+
+
+  <p>Busque seu prato pelo ingrediente</p>
+  
+  <form id="filtro-ingredientes">
+    {% for ingrediente in Ingredientes %}
+      <label>
+        <input type="checkbox" name="ingrediente" value="{{ ingrediente.id }}"> {{ ingrediente.nome }}
+      </label><br>
+    {% endfor %}
+    <br>
+    <button type="submit">Filtrar</button>
+    <button type="button" onclick="limparFiltro()">Limpar</button>
+  </form>
+  
+  
+{% endblock %}
+
+
 {% block 'body' %}
 
 <br>
@@ -15,45 +36,73 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 mx-4">
 
   {% for pratos in prato %}
-
-    <div id="c5" class="col">
-        <div onclick="exibir_form('1')" class="card">
-         <img src="{% static ''|add:pratos.foto.url %}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title" value="{{ingrediente.id}}">{{ pratos.nome_prato }}</h5>
-
-            <p>Ingredientes: 
-              {% for cardapio in pratos.cardapio_set.all %}
-                  {{ cardapio.Ingrediente.nome }}{% if not forloop.last %}, {% endif %}
-              {% endfor %}
-            </p>
-
-          </div>
+    <div id="{{ pratos.id }}" class="col">
+      <div onclick="exibir_form('1')" class="card">
+        <img src="{% static ''|add:pratos.foto.url %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title" value="{{ pratos.id }}">{{ pratos.nome_prato }}</h5>
+          <p>Ingredientes:
+            {% for cardapio in pratos.cardapio_set.all %}
+              <span class="ingrediente" data-id="{{ cardapio.Ingrediente.id }}">{{ cardapio.Ingrediente.nome }}</span>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </p>
         </div>
+      </div>
     </div>
-
-  {% endfor %}    
+  {% endfor %}
 
 </div>
-
-
-  <div id="cardapio_teste" onclick="exibir_form('3')">
-
-
-    <h5 class="card-title">Você clicou no prato</h5>
-
-    <select onchange="exibir_form('2')">
-
-      {% for ingrediente in prato %}
-
-      <option value="{{ingrediente.id}}">{{ingrediente}}</option>
-
-      {% endfor %}
-
-    </select>
-
-  </div>
-
+</div>
     
   <script src="{% static 'cardapio/js/cardapio.js' %}"></script>  
+  <script src="{% static 'general/js/base.js' %}"></script>  
+
+
+
+  <script>
+    document.getElementById('filtro-ingredientes').addEventListener('submit', function(event) {
+      event.preventDefault(); // Impede o envio do formulário
+      var ingredientesSelecionados = document.querySelectorAll('input[name="ingrediente"]:checked');
+      var ingredientesIds = Array.from(ingredientesSelecionados).map(function(input) {
+        return input.value;
+      });
+  
+      var cards = document.getElementsByClassName('col');
+  
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var ingredientes = card.querySelectorAll('.ingrediente');
+        var mostrarCard = false;
+        var pratoId = card.getAttribute('id');
+  
+        for (var j = 0; j < ingredientes.length; j++) {
+          var ingredienteId = ingredientes[j].getAttribute('data-id');
+  
+          if (ingredientesIds.includes(ingredienteId)) {
+            mostrarCard = true;
+            break;
+          }
+        }
+  
+        if (!mostrarCard) {
+          card.style.display = 'none';
+        } else {
+          card.style.display = 'block';
+        }
+      }
+    });
+  
+    function limparFiltro() {
+      var checkboxes = document.querySelectorAll('input[name="ingrediente"]');
+      checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+      });
+  
+      var cards = document.getElementsByClassName('col');
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].style.display = 'block';
+      }
+    }
+  </script>
+
 {% endblock  %}

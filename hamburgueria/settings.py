@@ -70,8 +70,8 @@ WSGI_APPLICATION = 'hamburgueria.wsgi.application'
    #     'NAME': 'cardapio_postgre',
     #    'USER': 'grupo3_ti_pi',
      #   'PASSWORD': '4PuA2Jc9O0xVuvRf70UJDIWa1pAiBmrR',
-      #  'HOST': 'dpg-ch81s0o2qv2864qb6n60-a.oregon-postgres.render.com',
-#   }
+     #   'HOST': 'dpg-ch81s0o2qv2864qb6n60-a.oregon-postgres.render.com',
+  # }
 #}
 
 
