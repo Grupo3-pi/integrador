@@ -11,10 +11,64 @@
     <link rel="stylesheet" href="{% static 'general/css/general.css' %}">
 
     <style>
-      body{
-      background-color:#211515;
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-color: #160A0C;
       }
+      
+      .container-fluid {
+      display: flex;
+      flex-grow: 1;
+      height: 100%;
+      background-color: #160A0C;
+      }
+
+      .navbar {
+      flex-basis: 80px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-direction: column;
+      background-color: #e0a912;
+      }
+
+      .navbar-brand {
+      padding: 1rem;
+      text-align: center;
+      background-color: #160A0C;
+      }
+
+      .navbar-nav {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding-top: 1rem;
+      background-color: #160A0C;
+      }
+
+      .nav-link {
+      padding: 0.5rem 1rem;
+      text-align: center;
+      background-color: #160A0C;
+      }
+
+      .content {
+      flex-grow: 1;
+      padding: 2rem;
+      background-color: #160A0C;
+      }
+
+      .search-button {
+      background-color: #e0a912;
+      }
+
     </style>
+
+    <script src="https://kit.fontawesome.com/2632c2155c.js" crossorigin="anonymous"></script>
+
 
   </head>
 
@@ -27,14 +81,17 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 200px;">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" aria-current="page" href="#">HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin">Área Restrita</a>
+          <a class="nav-link" href="#">SOBRE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">CONTATO</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Busca</button>
+        <button class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Encontre seu prato</button>
 
       </form>
     </div>
@@ -51,6 +108,16 @@
     {% block 'drop'%}
     {% endblock %}
 
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <img src="{% static 'media/banner-hangar25.png' %}" alt="Banner" width="75%">
+      </div>
+    </div>
   </div>
 </div>
 

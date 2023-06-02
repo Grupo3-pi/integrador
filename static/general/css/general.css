@@ -1,14 +1,20 @@
 
 .bg-body-tertiary {
-
-  --bs-tertiary-bg-rgb: 84,50,49;
-
-
+  --bs-tertiary-bg-rgb: 224,169,18;
 }
 
 .offcanvas-start{
+  --bs-body-bg: #e0a912;
+}
 
+.container-fluid {
+  background-color: rgb(134, 26, 49);
+}
 
-  --bs-body-bg: #a63f1f;
+.navbar-brand {
+    color: #fff;
+}
 
+.nav-link {
+  color: #fff;
 }
