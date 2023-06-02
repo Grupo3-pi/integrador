@@ -20,8 +20,8 @@
       </label><br>
     {% endfor %}
     <br>
-    <button type="submit">Filtrar</button>
-    <button type="button" onclick="limparFiltro()">Limpar</button>
+    <button type="submit" data-bs-dismiss="offcanvas">Filtrar</button>
+    <button type="button" data-bs-dismiss="offcanvas" onclick="limparFiltro()">Limpar</button>
   </form>
   
   
@@ -74,10 +74,11 @@
         var ingredientes = card.querySelectorAll('.ingrediente');
         var mostrarCard = false;
         var pratoId = card.getAttribute('id');
+        var checkboxes = document.querySelectorAll('input[name="ingrediente"]');
   
         for (var j = 0; j < ingredientes.length; j++) {
           var ingredienteId = ingredientes[j].getAttribute('data-id');
-  
+          
           if (ingredientesIds.includes(ingredienteId)) {
             mostrarCard = true;
             break;
