@@ -1,6 +1,11 @@
 from django.contrib import admin
 from .models import Cardapio, Prato, Ingredientes
 
+admin.site.site_header = "Painel Administrativo"
+admin.site.index_title = "Hangar 252"
+admin.site.site_title = "Painel Administrativo"
+
+
 @admin.register(Cardapio)
 class CardapioAdmin(admin.ModelAdmin):
     list_display=('id','prato','Ingrediente')

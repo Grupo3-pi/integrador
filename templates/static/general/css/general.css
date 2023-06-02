@@ -1,10 +1,53 @@
- .card3 {
-    background-color: #07f13e;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+  .body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #250303;
+  }
+  
+  .container-fluid {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  background-color: #160A0C;
   }
 
-  .container-fluid {
-    background-color: rgb(247, 30, 30);
+  .navbar {
+  flex-basis: 80px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-direction: column;
+  background-color: #e0a912;
+  }
+
+  .navbar-brand {
+  padding: 1rem;
+  text-align: center;
+  background-color: #160A0C;
+  }
+
+  .navbar-nav {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-top: 1rem;
+  background-color: #160A0C;
+  }
+
+  .nav-link {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: #160A0C;
+  }
+
+  .content {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: #160A0C;
+  }
+
+  .search-button {
+  background-color: #e0a912;
   }
