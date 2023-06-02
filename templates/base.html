@@ -84,10 +84,10 @@
           <a class="nav-link" aria-current="page" href="#">HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">SOBRE</a>
+          <a class="nav-link" data-bs-toggle="modal" href="#exampleModal">SOBRE</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">CONTATO</a>
+          <a class="nav-link" data-bs-toggle="modal" href="#exampleModal2">CONTATO</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -97,6 +97,47 @@
     </div>
   </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Sobre</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Bem vindo a Hamburgueria Hangar 252!<br>
+        Lanches/Pratos de qualidade e com sabor que farão você se sentir nas alturas!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Contato</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Telefone: (00)0000-0000<br>
+          Email: hamburgueria@hamburgueria.com.br<br>
+          
+          Localização<br>
+          Rua Asfaltada s/n<br>
+          Araraquara - SP</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
