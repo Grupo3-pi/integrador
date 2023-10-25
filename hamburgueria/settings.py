@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cardapio',
+    'frete',
 ]
 
 MIDDLEWARE = [
@@ -64,9 +65,20 @@ WSGI_APPLICATION = 'hamburgueria.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+#DATABASES = {
+ #   'default': dj_database_url.config(),
+#}
+
 DATABASES = {
-    'default': dj_database_url.config(),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cardapio_postgre_q20a',
+        'USER': 'grupo3_ti_pi',
+        'PASSWORD': 'AOQnCXdn3C1Eb1ZgWByPlQ1D5DEOhZKS',
+        'HOST': 'dpg-ckm5mojj89us73adjk40-a.oregon-postgres.render.com',
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
