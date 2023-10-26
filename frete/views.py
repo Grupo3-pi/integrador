@@ -39,24 +39,24 @@ def calcula_frete(request):
 
             Km = (Distancia / 1000)
 
-         #   print(f'\nDistância = {data['routes'][0]['summary']['lengthInMeters']} metros\n')
+            #print(f'\nDistância = {data['routes'][0]['summary']['lengthInMeters']} metros\n')
 
-        #    print(f'Distância = {Km} Km\n')
+            #print(f'Distância = {Km} Km\n')
 
         else:
         
-          #  print(f'Routing failed! Error={response.status_code}\n')
+            print(f'Routing failed! Error={response.status_code}\n')
 
-            if Km > 5 and Km < 15:
-                Frete = '15 reais'
+        if Km > 5 and Km < 15:
+            Frete = '15 reais'
 
-            elif Km <= 5:
-                Frete = '5 reais'
+        elif Km <= 5:
+            Frete = '5 reais'
 
-            else:
-                Frete = 'Região não atendida!'
+        else:
+            Frete = 'Região não atendida!'
 
-      #  print(f'Valor do Frete = {Frete}\n')
+        print(f'Valor do Frete = {Frete}\n')
         
         resultado = f'O frete para {rua}, {num}, {city} é {Frete}'
 
