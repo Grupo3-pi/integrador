@@ -1,7 +1,9 @@
-## Projeto Integrador Univesp 2023 - Grupo 3
+## Projeto Integrador Univesp 2023 - Grupo 6
 
 # Cardapio interativo utilizando Django/Python
 
-Primeiro Semestre
+Segundo Semestre
 
-Hamburgueria Hangar 252
+Implementação de aplicativo para cálculo de frete com uso de APi.
+
+Empresa: Hamburgueria Hangar 252

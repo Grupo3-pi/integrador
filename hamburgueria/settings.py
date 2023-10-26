@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cardapio',
+    'frete',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,8 @@ WSGI_APPLICATION = 'hamburgueria.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(),
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
