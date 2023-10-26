@@ -47,14 +47,14 @@ def calcula_frete(request):
         
           #  print(f'Routing failed! Error={response.status_code}\n')
 
-        if Km > 5 and Km < 15:
-            Frete = '15 reais'
+            if Km > 5 and Km < 15:
+                Frete = '15 reais'
 
-        elif Km <= 5:
-            Frete = '5 reais'
+            elif Km <= 5:
+                Frete = '5 reais'
 
-        else:
-            Frete = 'Região não atendida!'
+            else:
+                Frete = 'Região não atendida!'
 
       #  print(f'Valor do Frete = {Frete}\n')
         
