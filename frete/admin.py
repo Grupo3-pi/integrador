@@ -9,8 +9,9 @@ admin.site.site_title = "Painel Administrativo"
 @admin.register(Hamburgueria)
 class HamburgueriaAdmin(admin.ModelAdmin):
     list_display=('nome','latitude','longitude')
-
+    list_editable=('latitude','longitude')
 
 @admin.register(FaixaFrete)
 class FaixaFreteAdmin(admin.ModelAdmin):
     list_display=('hamburgueria','distancia_minima','distancia_maxima','valor_frete')
+    list_editable=('distancia_minima','distancia_maxima','valor_frete')
