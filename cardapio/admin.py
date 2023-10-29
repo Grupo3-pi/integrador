@@ -23,5 +23,6 @@ class IngredientesAdmin(admin.ModelAdmin):
 class PratoAdmin(admin.ModelAdmin):
     list_display=('id','nome_prato','tipo','descricao','foto')
     list_display_links=('id','nome_prato')
+    list_editable=('nome_prato','foto')
     list_filter=('tipo',)
     search_fields=('nome_prato',)
