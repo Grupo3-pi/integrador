@@ -40,7 +40,7 @@
       <div class="card">
         <img src="{% static ''|add:pratos.foto.url %}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title" value="{{ pratos.id }}">{{ pratos.nome_prato }}</h5>
+          <h4 class="card-title" value="{{ pratos.id }}">{{ pratos.nome_prato }}</h4>
           <p>Ingredientes:
             {% for cardapio in pratos.cardapio_set.all %}
               <span class="ingrediente" data-id="{{ cardapio.Ingrediente.id }}">{{ cardapio.Ingrediente.nome }}</span>{% if not forloop.last %}, {% endif %}
@@ -62,7 +62,7 @@
   <script>
     document.getElementById('filtro-ingredientes').addEventListener('submit', function(event) {
       event.preventDefault(); // Impede o envio do formulário
-      var ingredientesSelecionados = document.querySelectorAll('input[name="ingrediente"]:checked');
+      var ingredientesSelecionados = document.querySelectorAll('input:checked');
       var ingredientesIds = Array.from(ingredientesSelecionados).map(function(input) {
         return input.value;
       });
