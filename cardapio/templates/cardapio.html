@@ -16,7 +16,7 @@
   <form id="filtro-ingredientes">
     {% for ingrediente in Ingredientes %}
       <label>
-        <input type="checkbox" name="ingrediente" value="{{ ingrediente.id }}"> {{ ingrediente.nome }}
+        <input type="checkbox" name="{{ ingrediente.nome }}" value="{{ ingrediente.id }}"> {{ ingrediente.nome }}
       </label><br>
     {% endfor %}
     <br>
@@ -37,7 +37,7 @@
 
   {% for pratos in prato %}
     <div id="{{ pratos.id }}" class="col">
-      <div onclick="exibir_form('1')" class="card">
+      <div class="card">
         <img src="{% static ''|add:pratos.foto.url %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title" value="{{ pratos.id }}">{{ pratos.nome_prato }}</h5>

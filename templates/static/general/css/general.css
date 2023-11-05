@@ -25,7 +25,8 @@
   .navbar-brand {
   padding: 1rem;
   text-align: center;
-  background-color: #160A0C;
+  background-color: #ff002b;
+  color: red;
   }
 
   .navbar-nav {
@@ -41,7 +42,7 @@
   text-align: center;
   background-color: #160A0C;
   }
-
+      
   .content {
   flex-grow: 1;
   padding: 2rem;
@@ -50,4 +51,12 @@
 
   .search-button {
   background-color: #e0a912;
+  }
+
+ .nav-link:hover,.nav-link:focus{
+  color:#e0a912;
+  }
+
+  .navbar-brand:hover,.navbar-brand:focus{
+  color:#e0a912;
   }
