@@ -70,3 +70,4 @@ def calcula_frete(request):
         resultado = f'O frete para {rua}, {num}, {city} é: {Frete}'
 
     return render(request, 'calcula_frete.html', {'resultado': resultado})
+
