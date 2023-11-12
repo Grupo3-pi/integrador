@@ -49,6 +49,17 @@
         </div>
       </div>
     </div>
+
+    <div id="nenhumPratoEncontrado" class="cole" style="display: none;">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title" value="Nenhum prato encontrado">Nenhum prato encontrado</h4>
+          <p>Escolha outra combinação de ingredientes.
+          </p>
+        </div>
+      </div>
+    </div>
+
   {% endfor %}
 
 </div>
@@ -60,50 +71,61 @@
 
 
   <script>
-    document.getElementById('filtro-ingredientes').addEventListener('submit', function(event) {
-      event.preventDefault(); // Impede o envio do formulário
-      var ingredientesSelecionados = document.querySelectorAll('input:checked');
-      var ingredientesIds = Array.from(ingredientesSelecionados).map(function(input) {
-        return input.value;
-      });
-  
-      var cards = document.getElementsByClassName('col');
-  
-      for (var i = 0; i < cards.length; i++) {
-        var card = cards[i];
-        var ingredientes = card.querySelectorAll('.ingrediente');
-        var mostrarCard = false;
-        var pratoId = card.getAttribute('id');
-        var checkboxes = document.querySelectorAll('input[name="ingrediente"]');
-  
-        for (var j = 0; j < ingredientes.length; j++) {
-          var ingredienteId = ingredientes[j].getAttribute('data-id');
-          
-          if (ingredientesIds.includes(ingredienteId)) {
-            mostrarCard = true;
-            break;
-          }
-        }
-  
-        if (!mostrarCard) {
-          card.style.display = 'none';
-        } else {
-          card.style.display = 'block';
-        }
-      }
-    });
-  
-    function limparFiltro() {
-      var checkboxes = document.querySelectorAll('input[name="ingrediente"]');
-      checkboxes.forEach(function(checkbox) {
-        checkbox.checked = false;
-      });
-  
-      var cards = document.getElementsByClassName('col');
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].style.display = 'block';
+  document.getElementById('filtro-ingredientes').addEventListener('submit', function (event) {
+  event.preventDefault(); // Impede o envio do formulário
+  var ingredientesSelecionados = document.querySelectorAll('input:checked');
+  var ingredientesIds = Array.from(ingredientesSelecionados).map(function (input) {
+    return input.value;
+  });
+
+  var cards = document.getElementsByClassName('col');
+  var nenhumPratoEncontrado = document.getElementById('nenhumPratoEncontrado');
+  var algumPratoEncontrado = false;
+
+  for (var i = 0; i < cards.length; i++) {
+    var card = cards[i];
+    var ingredientes = card.querySelectorAll('.ingrediente');
+    var pratoId = card.getAttribute('id');
+    var mostrarCard = true;
+
+    for (var j = 0; j < ingredientesIds.length; j++) {
+      var ingredienteId = ingredientesIds[j];
+
+      // Verifica se o ingrediente não está presente no card
+      if (!Array.from(ingredientes).some(function (ingrediente) {
+        return ingrediente.getAttribute('data-id') === ingredienteId;
+      })) {
+        mostrarCard = false;
+        break;
       }
     }
+
+    if (mostrarCard) {
+      card.style.display = 'block';
+      algumPratoEncontrado = true;
+    } else {
+      card.style.display = 'none';
+    }
+  }
+
+  // Exibe ou oculta o card "Nenhum prato encontrado"
+  nenhumPratoEncontrado.style.display = algumPratoEncontrado ? 'none' : 'block';
+});
+
+function limparFiltro() { 
+  var checkboxes = document.querySelectorAll('input:checked');
+  checkboxes.forEach(function (checkbox) {
+    checkbox.checked = false;
+  });
+
+  var cards = document.getElementsByClassName('col');
+  var nenhumPratoEncontrado = document.getElementById('nenhumPratoEncontrado');
+  nenhumPratoEncontrado.style.display = 'none';
+
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].style.display = 'block';
+  }
+}
   </script>
 
 {% endblock  %}
