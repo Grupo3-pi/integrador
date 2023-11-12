@@ -38,7 +38,7 @@
   {% for pratos in prato %}
     <div id="{{ pratos.id }}" class="col">
       <div class="card">
-        <img src="{% static ''|add:pratos.foto.url %}" class="card-img-top" alt="...">
+        <img src="{% static ''|add:pratos.foto.url %}" class="card-img-top" alt="{{ pratos.nome_prato }}">
         <div class="card-body">
           <h4 class="card-title" value="{{ pratos.id }}">{{ pratos.nome_prato }}</h4>
           <p>Ingredientes:
