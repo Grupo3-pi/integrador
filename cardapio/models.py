@@ -12,6 +12,7 @@ class Prato(models.Model):
     tipo = models.CharField(max_length=30)
     descricao = models.CharField(max_length=50, default='Descrição')
     foto = models.ImageField(upload_to='', default='images.jpeg')
+    valor = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
 
     def __str__(self) -> str:
         return self.nome_prato
