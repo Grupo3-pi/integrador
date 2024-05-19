@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexmonster Integration</title>
+    <link rel="stylesheet" href="{% static 'flexmonster/flexmonster.css' %}">
+    <script src="{% static 'flexmonster/flexmonster.js' %}"></script>
+</head>
+<body>
+    <div id="pivot-container"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            new Flexmonster({
+                container: "pivot-container",
+                toolbar: true,
+                report: {
+                    dataSource: {
+                        type: "json",
+                        data: "{{ data_url }}"
+                    },
+                    slice: {
+                        rows: [{ "uniqueName": "cliente.nome_completo" }],
+                        columns: [{ "uniqueName": "[Measures]" }],
+                        measures: [{ "uniqueName": "Pedidos Count", "aggregation": "count" }]
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

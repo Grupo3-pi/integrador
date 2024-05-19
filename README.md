@@ -1,8 +1,8 @@
-## Projeto Integrador Univesp 2023 - Grupo 6
+## Projeto Integrador Univesp 2024 - Grupo 6
 
 # Cardapio interativo utilizando Django/Python
 
-Segundo Semestre
+Projeto Integrador III
 
 Implementação de aplicativo para cálculo de frete com uso de APi.
 
