@@ -24,20 +24,28 @@
                     filename: "{% url 'flexmonster_data' %}"
                 },
                 slice: {
+                    reportFilters: [
+                            { uniqueName: "cliente_nome" }
+                        ],
                     rows: [
-                            { uniqueName: "cliente_nome" },
+                            { uniqueName: "cliente_idade" },
                         ],
                         columns: [
-                            { uniqueName: "cliente_nome" },
                             { uniqueName: "prato" },
-                            { uniqueName: "[Measures]" }
+                            { uniqueName: "[Measures]" },
+                            { uniqueName: "cliente_cidade" }
                         ],
                     measures: [
                         {
-                            uniqueName: "Valor Total",
+                            uniqueName: "quantidade",
                             aggregation: "sum"
                         }
+                    ],
+
+                    flatOrder: [
+                        { uniqueName: "cliente_nome" }
                     ]
+
                 }
             }
         });

@@ -18,6 +18,7 @@ def flexmonster_data(request):
             "id_pedido": pedido.id,
             "cliente_nome": pedido.cliente.nome_completo,
             "cliente_cpf": pedido.cliente.cpf,
+            "cliente_cidade": pedido.cliente.cidade,
             "prato": item.prato.nome_prato,
             "quantidade": item.quantidade,
             "data_pedido": pedido.data_pedido,
