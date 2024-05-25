@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'cliente',
     'analise',
     'pedido',
-    'login',
 ]
 
 MIDDLEWARE = [
