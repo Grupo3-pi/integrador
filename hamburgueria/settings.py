@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'pedido',
     'login',
 ]
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
