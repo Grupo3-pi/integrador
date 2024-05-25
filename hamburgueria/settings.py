@@ -29,6 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cardapio',
     'frete',
+    'cliente',
+    'analise',
+    'pedido',
+    'login',
 ]
 
 MIDDLEWARE = [
