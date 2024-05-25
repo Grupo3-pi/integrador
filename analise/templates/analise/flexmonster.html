@@ -1,22 +1,58 @@
-<!-- templates/analise/flexmonster.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Flexmonster Integration</title>
+    <title>Hangar 252 - Análise de dados</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'flexmonster/flexmonster.css' %}">
-    <script src="{% static 'flexmonster/flexmonster.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.flexmonster.com/theme/blackorange/flexmonster.min.css" />
+    <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
+
+
 </head>
 <body>
-    <div id="pivot-container"></div>
+  <div id="pivot-container"></div>
 
-    <script>
+  <div class="demo-box">
+      <div class="row">
+          <div class="col-6">
+              <div class="demo-title"><br>
+                  Quantidade de lanches vendidos por bairro
+              </div>
+              <div id="pie-chart-container"></div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="demo-box">
+      <div class="demo-title"><br>
+          Quantidade de ingredientes por pedido
+      </div>
+      <div class="row">
+          <div class="col-6">
+              <div id="bar-chart-container"></div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="demo-box">
+      <div class="demo-title"><br>
+          Total de lanches vendidos por usuário
+      </div>
+      <div class="row">
+          <div class="col-6">
+              <div id="user-chart-container"></div>
+          </div>
+      </div>
+  </div>
+    
+
+      <script>
         let pivot = new Flexmonster({
             container: "#pivot-container",
             componentFolder: "https://cdn.flexmonster.com/",
             width: "100%",
-            height: 600,
+            height: 400,
+            licenseFilePath: "https://cdn.flexmonster.com/jsfiddle.charts.key",
             toolbar: true,
             report: {
                 dataSource: {
@@ -25,30 +61,192 @@
                 },
                 slice: {
                     reportFilters: [
-                            { uniqueName: "cliente_nome" }
-                        ],
+                        { uniqueName: "cliente_nome" },
+                        { uniqueName: "cliente_cidade" },
+                        { uniqueName: "data_pedido.Month" },
+                        { uniqueName: "data_pedido.Year" }
+                    ],
                     rows: [
-                            { uniqueName: "cliente_idade" },
-                        ],
-                        columns: [
-                            { uniqueName: "prato" },
-                            { uniqueName: "[Measures]" },
-                            { uniqueName: "cliente_cidade" }
-                        ],
+                        { uniqueName: "vendedor" },
+                    ],
+                    columns: [
+                        { uniqueName: "prato" },
+                        { uniqueName: "[Measures]" }
+                    ],
                     measures: [
                         {
                             uniqueName: "quantidade",
-                            aggregation: "sum"
+                            aggregation: "sum",
+                            caption: "Lanches"
+                        },
+                        {
+                            uniqueName: "valor_total",
+                            aggregation: "sum",
+                            caption: "Faturamento"
                         }
                     ],
-
                     flatOrder: [
                         { uniqueName: "cliente_nome" }
                     ]
-
                 }
             }
         });
+    
+        const bar_chart = new Flexmonster({
+            container: "#bar-chart-container",
+            componentFolder: "https://cdn.flexmonster.com/",
+            height: 300,
+            licenseFilePath: "https://cdn.flexmonster.com/jsfiddle.charts.key",
+            report: {
+                dataSource: {
+                    type: "json",
+                    filename: "{% url 'flexmonster_data' %}"
+                },
+                slice: {
+                    rows: [{
+                        uniqueName: "ingrediente",
+                    }, ],
+                    columns: [{
+                        uniqueName: "ingrediente",
+                    }, ],
+                    measures: [{
+                        uniqueName: "quantidade",
+                    }],
+                    sorting: {
+                        column: {
+                            type: "desc",
+                            tuple: [],
+                            measure: {
+                                uniqueName: "ingrediente",
+                            },
+                        },
+                    },
+                },
+                options: {
+                    viewType: "charts",
+                    configuratorButton: false,
+                    drillThrough: false,
+                    chart: {
+                        type: "bar_h",
+                        showFilter: false,
+                        showMeasures: false,
+                    },
+                },
+                formats: [{
+                    name: "currency",
+                    currencySymbol: "$",
+                },
+                {
+                    name: "",
+                    decimalPlaces: 2,
+                }],
+            },
+        });
+    
+        const pie_chart = new Flexmonster({
+            container: "#pie-chart-container",
+            componentFolder: "https://cdn.flexmonster.com/",
+            height: 390,
+            licenseFilePath: "https://cdn.flexmonster.com/jsfiddle.charts.key",
+            report: {
+                dataSource: {
+                    type: "json",
+                    filename: "{% url 'flexmonster_data' %}"
+                },
+                slice: {
+                    rows: [{
+                        uniqueName: "cliente_bairro",
+                    }, ],
+                    columns: [{
+                        uniqueName: "cliente_cidade",
+                    }, ],
+                    measures: [{
+                        uniqueName: "quantidade",
+                        caption: "Quantidade",
+                    }],
+                },
+                options: {
+                    viewType: "charts",
+                    configuratorButton: false,
+                    drillThrough: false,
+                    chart: {
+                        type: "pie",
+                        showFilter: false,
+                        showLegend: false,
+                        showMeasures: false,
+                    },
+                },
+                formats: [{
+                    name: "currency",
+                    currencySymbol: "$",
+                },
+                {
+                    name: "",
+                    decimalPlaces: 2,
+                },
+                {
+                    name: "satisfaction_perc",
+                    isPercent: true,
+                }],
+            },
+        });
+    
+        // Novo gráfico para total de lanches vendidos por usuário
+        const user_chart = new Flexmonster({
+            container: "#user-chart-container",
+            componentFolder: "https://cdn.flexmonster.com/",
+            height: 300,
+            licenseFilePath: "https://cdn.flexmonster.com/jsfiddle.charts.key",
+            report: {
+                dataSource: {
+                    type: "json",
+                    filename: "{% url 'flexmonster_data' %}"
+                },
+                slice: {
+                    rows: [{
+                        uniqueName: "vendedor",
+                    }],
+                    columns: [{
+                        uniqueName: "[Measures]",
+                    }],
+                    measures: [{
+                        uniqueName: "quantidade",
+                        aggregation: "sum",
+                        caption: "Total de lanches",
+                    }],
+                },
+                options: {
+                    viewType: "charts",
+                    configuratorButton: false,
+                    drillThrough: false,
+                    chart: {
+                        type: "column",
+                        showFilter: false,
+                        showMeasures: false,
+                    },
+                },
+                formats: [{
+                    name: "currency",
+                    currencySymbol: "$",
+                },
+                {
+                    name: "",
+                    decimalPlaces: 2,
+                }],
+            },
+        });
+    
+        function customizeCell(cell, data) {
+            if (data.hierarchy && data.type === "header" && data.hierarchy.caption === "Satisfaction" && data.member) {
+                let name = data.member.caption;
+                let face = `<img class="flag" style="width:23px; height:23px;" src="https://www.flexmonster.com/base/assets/img/demos/${name}Emoji.png">`;
+                cell.text = `<div style="display:flex; align-items:center; font-size:12px; position:relative; bottom: 3px; left:2px;">${face}${data.member.caption}</div>`;
+            }
+        }
     </script>
+
+  
+  
+
 </body>
 </html>
