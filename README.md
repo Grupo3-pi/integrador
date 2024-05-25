@@ -4,6 +4,6 @@
 
 Projeto Integrador III
 
-Implementação de aplicativo para cálculo de frete com uso de APi e análise de dados.
+Implementação de aplicativo para cálculo de frete com uso de APi.
 
 Empresa: Hamburgueria Hangar 252
