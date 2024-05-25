@@ -6,6 +6,4 @@ urlpatterns = [
     path('', include('cardapio.urls')),
     path('', include('frete.urls')),
     path('analise/', include('analise.urls')),
-    path('pedido/', include('pedido.urls')),
-    path('', include('login.urls')), 
 ]
